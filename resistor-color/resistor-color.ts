@@ -1,20 +1,24 @@
-enum ResistorColorValues {
-  black,
-  brown,
-  red,
-  orange,
-  yellow,
-  green,
-  blue,
-  violet,
-  grey,
-  white
-}
+const ResistorColorValues = {
+  black: 0,
+  brown: 1,
+  red: 2,
+  orange: 3,
+  yellow: 4,
+  green: 5,
+  blue: 6,
+  violet: 7,
+  grey: 8,
+  white: 9
+} as const
 
-export const colorCode = (color: keyof typeof ResistorColorValues): number => {
+// Type union of all possible colors (for the parameter)
+type Color = keyof typeof ResistorColorValues
+
+// Type union of all possible color values (for the return type)
+type Values<T> = T[keyof T]
+
+export const colorCode = (color: Color): Values<typeof ResistorColorValues> => {
   return ResistorColorValues[color]
 }
 
-export const COLORS = Object.keys(ResistorColorValues).slice(
-  Object.keys(ResistorColorValues).length / 2
-)
+export const COLORS = Object.keys(ResistorColorValues)
