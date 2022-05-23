@@ -2,9 +2,9 @@
 
 ## Starting an exercise
 
-1. Pick an exercise from https://exercism.org/tracks/typescript/exercises.
+1. Pick an exercise from: https://exercism.org/tracks/typescript/exercises.
 
-2. Donwload the exercise locally via CLI. See the comman in the right block on the exercise page.
+2. Download the exercise locally via CLI. See the command in the right block on the exercise page.
 
 3. Navigate to the exercise folder in your machine. Install all dev
    dependencies in package.json by running `yarn install` command.
