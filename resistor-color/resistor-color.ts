@@ -1,5 +1,20 @@
-export const colorCode = () => {
-  throw new Error('Delete this line and implement this function')
+enum ResistorColorValues {
+  black,
+  brown,
+  red,
+  orange,
+  yellow,
+  green,
+  blue,
+  violet,
+  grey,
+  white
 }
 
-export const COLORS = undefined
+export const colorCode = (color: keyof typeof ResistorColorValues): number => {
+  return ResistorColorValues[color]
+}
+
+export const COLORS = Object.keys(ResistorColorValues).slice(
+  Object.keys(ResistorColorValues).length / 2
+)
