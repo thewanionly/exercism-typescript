@@ -1,13 +1,28 @@
 export class Matrix {
-  constructor() {
-    throw new Error('Remove this statement and implement this function')
+  matrixRows: number[][] = []
+  matrixColumns: number[][] = []
+
+  constructor(matrix: string) {
+    matrix.split('\n').forEach((row: string): void => {
+      const rowArray = row.split(' ').map((val: string): number => Number(val))
+
+      //set rows
+      this.matrixRows.push(rowArray)
+
+      //set columns
+      rowArray.forEach((value: number, colIndex: number): void => {
+        this.matrixColumns[colIndex]
+          ? this.matrixColumns[colIndex].push(value)
+          : (this.matrixColumns[colIndex] = [value])
+      })
+    })
   }
 
-  get rows(): unknown {
-    throw new Error('Remove this statement and implement this function')
+  get rows(): number[][] {
+    return this.matrixRows
   }
 
-  get columns(): unknown {
-    throw new Error('Remove this statement and implement this function')
+  get columns(): number[][] {
+    return this.matrixColumns
   }
 }
