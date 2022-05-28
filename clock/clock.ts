@@ -32,8 +32,8 @@ export class Clock {
     return new Clock(this.hour, this.minute - minutes)
   }
 
-  public equals(other: unknown): unknown {
-    throw new Error('Remove this statement and implement this function')
+  public equals(other: Clock): boolean {
+    return this.toString() === other.toString()
   }
 
   private calculateTotalHours(hours: number, minutes: number): number {
