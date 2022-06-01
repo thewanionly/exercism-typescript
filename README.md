@@ -13,7 +13,7 @@
 
 5. Find the stub file i.e. the main ts file (usually it's the file that has the name of the exercise). Write your solution there.
 
-6. Test your solution by running `yarn test` inside the exercise directory. In the .test.js file some of the tests are excluded. Enable all of them by changing `xit` to `it`.
+6. Test your solution by running `yarn test` or `yarn test --watch-all` inside the exercise directory. In the .test.js file some of the tests are excluded. Enable all of them by changing `xit` to `it`.
 
 7. Once done, submit your solution by running `exercism submit <stub-file-name>.ts` command. Just to be clear, replace `<stub-file-name>` with the file name of your stub file.
 
