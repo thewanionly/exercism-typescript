@@ -16,15 +16,15 @@ export class List<TElement> {
   first: ItemType<TElement> = null
   last: ItemType<TElement> = null
 
-  public static create(...values: (number | number[])[]): List<number | number[]> {
+  public static create<Type>(...values: Type[]): List<Type> {
     // Do *not* construct any array literal ([]) in your solution.
     // Do *not* construct any arrays through new Array in your solution.
     // DO *not* use any of the Array.prototype methods in your solution.
 
     // You may use the destructuring and spreading (...) syntax from Iterable.
-    const list = new List<number | number[]>()
+    const list = new List<Type>()
 
-    values.forEach((value: number | number[]) => list.push(value))
+    values.forEach((value: Type) => list.push(value))
 
     return list
   }
@@ -50,14 +50,55 @@ export class List<TElement> {
     }
   }
 
-  /**
-   * Given two lists, add all items in the second list to the end of the first list
-   */
-  append(list: List<TElement>): List<TElement> {
+  append<Type>(list: List<Type>): List<TElement> {
     list.forEach((value) => {
       this.push(value)
     })
 
     return this
+  }
+
+  concat<Type>(list: List<Type>): List<TElement> {
+    list.forEach((value) => {
+      if (typeof value === typeof list) {
+        this.concat(value)
+      } else {
+        this.push(value)
+      }
+    })
+
+    return this
+  }
+
+  filter<Type>(filterFn: (item: Type) => boolean): List<Type> {
+    const filteredList = new List<Type>()
+
+    this.forEach((value) => {
+      if (filterFn(value)) {
+        filteredList.push(value)
+      }
+    })
+
+    return filteredList
+  }
+
+  length(): number {
+    let count = 0
+
+    this.forEach(() => {
+      count++
+    })
+
+    return count
+  }
+
+  map<Type>(mapFn: (item: TElement) => Type): List<Type> {
+    const mappedList = new List<Type>()
+
+    this.forEach((value) => {
+      mappedList.push(mapFn(value))
+    })
+
+    return mappedList
   }
 }
