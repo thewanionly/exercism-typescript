@@ -63,19 +63,19 @@ export class List<TElement> {
   }
 
   append<Type>(list: List<Type>): List<TElement> {
-    list.forEach((value) => {
-      this.push(value)
+    list.forEach((value: TElement | Type) => {
+      this.push(value as TElement)
     })
 
     return this
   }
 
   concat<Type>(list: List<Type>): List<TElement> {
-    list.forEach((value) => {
+    list.forEach((value: TElement | Type | List<Type>) => {
       if (typeof value === typeof list) {
-        this.concat(value)
+        this.concat(value as List<Type>)
       } else {
-        this.push(value)
+        this.push(value as TElement)
       }
     })
 
@@ -85,9 +85,9 @@ export class List<TElement> {
   filter<Type>(filterFn: (item: Type) => boolean): List<Type> {
     const filteredList = new List<Type>()
 
-    this.forEach((value) => {
-      if (filterFn(value)) {
-        filteredList.push(value)
+    this.forEach((value: TElement | Type) => {
+      if (filterFn(value as Type)) {
+        filteredList.push(value as Type)
       }
     })
 
@@ -104,11 +104,11 @@ export class List<TElement> {
     return count
   }
 
-  map<Type>(mapFn: (item: TElement) => Type): List<Type> {
+  map<Type>(mapFn: (item: Type) => Type): List<Type> {
     const mappedList = new List<Type>()
 
-    this.forEach((value) => {
-      mappedList.push(mapFn(value))
+    this.forEach((value: TElement | Type) => {
+      mappedList.push(mapFn(value as Type))
     })
 
     return mappedList
@@ -120,8 +120,8 @@ export class List<TElement> {
   ): AccType {
     let foldResult: AccType = initialValue
 
-    this.forEach((value) => {
-      foldResult = foldFn(foldResult, value)
+    this.forEach((value: TElement | ElType) => {
+      foldResult = foldFn(foldResult, value as ElType)
     })
 
     return foldResult
