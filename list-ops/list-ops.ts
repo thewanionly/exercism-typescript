@@ -50,14 +50,13 @@ export class List<TElement> {
     }
   }
 
+  /**
+   * Given two lists, add all items in the second list to the end of the first list
+   */
   append(list: List<TElement>): List<TElement> {
-    // traverse through the given list and push to this list
-    let currItem = list.first
-
-    while (currItem) {
-      this.push(currItem.value)
-      currItem = currItem.next
-    }
+    list.forEach((value) => {
+      this.push(value)
+    })
 
     return this
   }
