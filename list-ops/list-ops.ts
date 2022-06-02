@@ -41,6 +41,18 @@ export class List<TElement> {
     }
   }
 
+  unshift(value: TElement): void {
+    const item = new Item<TElement>(value)
+
+    if (this.first) {
+      this.first.prev = item
+      item.next = this.first
+      this.first = item
+    } else {
+      this.first = this.last = item
+    }
+  }
+
   forEach(callbackFn: (value: TElement) => void): void {
     let currItem = this.first
 
@@ -100,5 +112,35 @@ export class List<TElement> {
     })
 
     return mappedList
+  }
+
+  foldl<ElType, AccType>(
+    foldFn: (acc: AccType, item: ElType) => AccType,
+    initialValue: AccType
+  ): AccType {
+    let foldResult: AccType = initialValue
+
+    this.forEach((value) => {
+      foldResult = foldFn(foldResult, value)
+    })
+
+    return foldResult
+  }
+
+  foldr<ElType, AccType>(
+    foldFn: (acc: AccType, item: ElType) => AccType,
+    initialValue: AccType
+  ): AccType {
+    return this.reverse().foldl<ElType, AccType>(foldFn, initialValue)
+  }
+
+  reverse(): List<TElement> {
+    const reversedList = new List<TElement>()
+
+    this.forEach((value) => {
+      reversedList.unshift(value)
+    })
+
+    return reversedList
   }
 }
