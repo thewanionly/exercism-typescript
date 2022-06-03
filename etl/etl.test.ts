@@ -8,21 +8,21 @@ describe('Transform', () => {
     expect(transform(old)).toEqual(expected)
   })
 
-  xit('transforms more values', () => {
+  it('transforms more values', () => {
     const old = { 1: ['A', 'E', 'I', 'O', 'U'] }
     const expected = { a: 1, e: 1, i: 1, o: 1, u: 1 }
 
     expect(transform(old)).toEqual(expected)
   })
 
-  xit('transforms more keys', () => {
+  it('transforms more keys', () => {
     const old = { 1: ['A', 'E'], 2: ['D', 'G'] }
     const expected = { a: 1, e: 1, d: 2, g: 2 }
 
     expect(transform(old)).toEqual(expected)
   })
 
-  xit('transforms a full dataset', () => {
+  it('transforms a full dataset', () => {
     const old = {
       1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
       2: ['D', 'G'],
@@ -30,7 +30,7 @@ describe('Transform', () => {
       4: ['F', 'H', 'V', 'W', 'Y'],
       5: ['K'],
       8: ['J', 'X'],
-      10: ['Q', 'Z'],
+      10: ['Q', 'Z']
     }
     const expected = {
       a: 1,
@@ -58,7 +58,7 @@ describe('Transform', () => {
       w: 4,
       x: 8,
       y: 4,
-      z: 10,
+      z: 10
     }
 
     expect(transform(old)).toEqual(expected)
