@@ -7,11 +7,8 @@ export const square = (squareNum: number): bigint | never => {
 }
 
 export const total = (): bigint => {
-  let totalGrains = BigInt(0)
-
-  for (let i = 0; i < MAX_SQUARES; i++) {
-    totalGrains += BigInt(2 ** i)
-  }
-
-  return totalGrains
+  return [...new Array(MAX_SQUARES).keys()].reduce(
+    (acc: bigint, curr) => acc + BigInt(2 ** curr),
+    BigInt(0)
+  )
 }
