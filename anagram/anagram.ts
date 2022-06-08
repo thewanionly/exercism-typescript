@@ -1,9 +1,23 @@
 export class Anagram {
-  constructor(input: unknown) {
-    throw new Error('Remove this statement and implement this function')
+  word: string
+
+  constructor(word: string) {
+    this.word = word
   }
 
-  public matches(...potentials: unknown[]): unknown {
-    throw new Error('Remove this statement and implement this function')
+  public matches(...candidates: string[]): string[] {
+    return candidates.filter(
+      (candidate) =>
+        this.word.toLowerCase() !== candidate.toLowerCase() &&
+        this.rearrange(this.word) === this.rearrange(candidate)
+    )
+  }
+
+  private rearrange(word: string): string {
+    return word
+      .split('')
+      .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+      .join('')
+      .toLowerCase()
   }
 }
