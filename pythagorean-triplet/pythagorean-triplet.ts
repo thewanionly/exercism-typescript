@@ -15,19 +15,19 @@ class Triplet {
 export function triplets({ sum, minFactor = 1, maxFactor }: Options): Triplet[] {
   const tripletsArr: Triplet[] = []
 
+  const maxLimit = maxFactor ?? sum
+
   // Find all 3 numbers that sum up to `sum`
-  for (let a = minFactor; a <= sum - 2; a++) {
-    for (let b = a + 1; b <= sum - a; b++) {
-      const cLimit = maxFactor || sum - (a + b)
-
-      for (let c = b + 1; c <= cLimit; c++) {
+  for (let a = minFactor; a < maxLimit; a++) {
+    for (let b = a + 1; b < maxLimit; b++) {
+      for (let c = b + 1; c < maxLimit; c++) {
         const N = a + b + c
-
-        if (N > sum) break
 
         if (N === sum && a ** 2 + b ** 2 === c ** 2) {
           tripletsArr.push(new Triplet(a, b, c))
         }
+
+        if (N + 1 > sum) break
       }
     }
   }
