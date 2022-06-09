@@ -1,13 +1,11 @@
 export function sum(multiples: number[], limit: number): number {
-  const numbers = new Set<number>()
+  let sumOfMultiples = 0
 
   for (let i = 1; i < limit; i++) {
-    for (let multiple of multiples) {
-      if (i % multiple === 0) {
-        numbers.add(i)
-      }
+    if (multiples.some((multiple) => i % multiple === 0)) {
+      sumOfMultiples += i
     }
   }
 
-  return [...numbers].reduce((acc, curr) => acc + curr, 0)
+  return sumOfMultiples
 }
