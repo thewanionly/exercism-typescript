@@ -6,42 +6,42 @@ describe('Check if the given string is an isogram', () => {
     expect(isIsogram('')).toEqual(expected)
   })
 
-  xit('isogram with only lower case characters', () => {
+  it('isogram with only lower case characters', () => {
     const expected = true
     expect(isIsogram('isogram')).toEqual(expected)
   })
 
-  xit('word with one duplicated character', () => {
+  it('word with one duplicated character', () => {
     const expected = false
     expect(isIsogram('eleven')).toEqual(expected)
   })
 
-  xit('longest reported english isogram', () => {
+  it('longest reported english isogram', () => {
     const expected = true
     expect(isIsogram('subdermatoglyphic')).toEqual(expected)
   })
 
-  xit('word with duplicated character in mixed case', () => {
+  it('word with duplicated character in mixed case', () => {
     const expected = false
     expect(isIsogram('Alphabet')).toEqual(expected)
   })
 
-  xit('hypothetical isogrammic word with hyphen', () => {
+  it('hypothetical isogrammic word with hyphen', () => {
     const expected = true
     expect(isIsogram('thumbscrew-japingly')).toEqual(expected)
   })
 
-  xit('isogram with duplicated hyphen', () => {
+  it('isogram with duplicated hyphen', () => {
     const expected = true
     expect(isIsogram('six-year-old')).toEqual(expected)
   })
 
-  xit('made-up name that is an isogram', () => {
+  it('made-up name that is an isogram', () => {
     const expected = true
     expect(isIsogram('Emily Jung Schwartzkopf')).toEqual(expected)
   })
 
-  xit('duplicated character in the middle', () => {
+  it('duplicated character in the middle', () => {
     const expected = false
     expect(isIsogram('accentor')).toEqual(expected)
   })
