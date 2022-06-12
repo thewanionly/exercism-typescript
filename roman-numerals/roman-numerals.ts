@@ -7,17 +7,11 @@ const indexMultiplier: { [key: number]: number } = {
 
 const RomanNumeral: { [key: number]: string } = {
   1: 'I',
-  4: 'IV',
   5: 'V',
-  9: 'IX',
   10: 'X',
-  40: 'XL',
   50: 'L',
-  90: 'XC',
   100: 'C',
-  400: 'CD',
   500: 'D',
-  900: 'CM',
   1000: 'M'
 }
 
@@ -33,17 +27,25 @@ export const toRoman = (num: number): string => {
     const multiplier = indexMultiplier[i]
 
     if (digit > 0) {
+      // if found in RomanNumeral object
       if (RomanNumeral[digit * multiplier]) {
         romanStr.unshift(RomanNumeral[digit * multiplier])
         continue
       }
 
+      // if digit is 4 or 9
+      if (digit === 4 || digit === 9) {
+        romanStr.unshift(`${RomanNumeral[multiplier]}${RomanNumeral[(digit + 1) * multiplier]}`)
+      }
+
+      // if digit is 1, 2 or 3
       if (digit >= 1 && digit <= 3) {
         for (let j = 0; j < digit; j++) {
           romanStr.unshift(RomanNumeral[multiplier])
         }
       }
 
+      // if digit is 6, 7 or 8
       if (digit >= 6 && digit <= 8) {
         for (let j = 0; j < digit - 5; j++) {
           romanStr.unshift(RomanNumeral[multiplier])
