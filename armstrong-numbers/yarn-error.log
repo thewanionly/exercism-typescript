@@ -1,0 +1,57 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\WaniPC\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\WaniPC\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\cmd;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\MongoDB\Server\4.4\bin;C:\HashiCorp\Vagrant\bin;C:\Program Files\nodejs;C:\Users\WaniPC\AppData\Local\Microsoft\WindowsApps;C:\Users\WaniPC\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\WaniPC\AppData\Local\GitHubDesktop\bin;C:\src\flutter\bin;C:\Users\WaniPC\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\WaniPC\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.21.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1187:16)
+
+npm manifest: 
+  {
+    "name": "@exercism/typescript-armstrong-numbers",
+    "version": "1.0.0",
+    "description": "Exercism exercises in Typescript.",
+    "private": true,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/exercism/typescript"
+    },
+    "type": "module",
+    "engines": {
+      "node": "^14.13.1 || >=16.0.0"
+    },
+    "devDependencies": {
+      "@exercism/babel-preset-typescript": "^0.1.0",
+      "@exercism/eslint-config-typescript": "^0.4.1",
+      "@types/jest": "^27.4.0",
+      "@types/node": "^16.11.24",
+      "babel-jest": "^27.5.1",
+      "core-js": "^3.21.0",
+      "eslint": "^8.9.0",
+      "jest": "^27.5.1",
+      "typescript": "^4.5.4"
+    },
+    "scripts": {
+      "test": "yarn lint:types && jest --no-cache",
+      "lint": "yarn lint:types && yarn lint:ci",
+      "lint:types": "yarn tsc --noEmit -p .",
+      "lint:ci": "eslint . --ext .tsx,.ts"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
